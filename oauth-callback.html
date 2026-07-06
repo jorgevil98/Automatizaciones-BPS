@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OAuth Callback - BPS QBO Automation</title>
+</head>
+<body>
+  <h1>QuickBooks Online Authorization Received</h1>
+
+  <p>
+    The authorization response has been received. Copy the full URL from your browser's address bar and paste it into the local authorization script.
+  </p>
+
+  <h2>Full callback URL</h2>
+  <textarea id="fullUrl" style="width: 100%; height: 120px;"></textarea>
+
+  <h2>Parameters</h2>
+  <p><strong>Code:</strong></p>
+  <textarea id="code" style="width: 100%; height: 80px;"></textarea>
+
+  <p><strong>Realm ID:</strong></p>
+  <input id="realmId" style="width: 100%;" readonly>
+
+  <p><strong>State:</strong></p>
+  <input id="state" style="width: 100%;" readonly>
+
+  <p>
+    <a href="index.html">Back to home</a>
+  </p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    document.getElementById("fullUrl").value = window.location.href;
+    document.getElementById("code").value = params.get("code") || "";
+    document.getElementById("realmId").value = params.get("realmId") || "";
+    document.getElementById("state").value = params.get("state") || "";
+  </script>
+</body>
+</html>
